@@ -1,0 +1,48 @@
+:root {
+    --prim: #FF8301;
+    --accent: #26025F;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 18px;
+}
+
+@media screen and (max-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    html {
+        font-size: 12px;
+    }
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: 'Alumni Sans', sans-serif;
+    font-style: italic;
+    text-transform: uppercase;
+}
+
+body {
+    overflow-x: hidden;
+    font-family: 'Azeret Mono', monospace;
+    background-color: var(--prim);
+    color: var(--accent);
+}
+
+p+p {
+    margin-top: 0.75em;
+}
+
+h1.bg-header, h2.bg-header {
+    color: var(--prim);
+    background-color: var(--accent);
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 0.8;
+    padding: 0.14em 0.22em 0.1em 0.22em;
+}

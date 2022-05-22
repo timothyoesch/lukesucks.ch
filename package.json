@@ -1,0 +1,36 @@
+{
+  "name": "lukesucks.ch",
+  "version": "1.0.0",
+  "description": "Petition against Luke Mockridge's show in Zurich on the 29th of May because multiple women have accused him of sexual asault. No shows for predators! lukesucks.ch",
+  "private": true,
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "fast-glob": "^3.2.11",
+    "laravel-mix": "^6.0.43",
+    "resolve-url-loader": "^5.0.0",
+    "sass": "^1.49.9",
+    "sass-loader": "^12.6.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-livereload-plugin": "^3.0.2",
+    "tailwindcss": "^3.0.23"
+  },
+  "scripts": {
+    "dev": "npm run development",
+    "development": "mix",
+    "watch": "mix watch",
+    "watch-poll": "mix watch -- --watch-options-poll=1000",
+    "hot": "mix watch --hot",
+    "prod": "npm run production",
+    "production": "mix --production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/timothyoesch/lukesucks.ch.git"
+  },
+  "author": "Timothy@k.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/timothyoesch/lukesucks.ch/issues"
+  },
+  "homepage": "https://lukesucks.ch"
+}

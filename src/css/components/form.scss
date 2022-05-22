@@ -1,0 +1,93 @@
+#sign-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 1rem 2.5rem;
+}
+
+.input-group {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.input-group.half {
+    width: calc(50% - 1.25rem);
+}
+
+.input-group label {
+    font-size: 1.5rem;
+    font-weight: 900;
+}
+
+input[type="text"],input[type="email"],input[type="password"] {
+    width: 100%;
+    padding: 0.3rem;
+    border: 3px solid var(--accent);
+    font-size: 0.75rem;
+    background-color: var(--prim);
+    color: var(--accent);
+}
+
+input:focus {
+    outline: none;
+}
+
+::placeholder {
+    color: var(--accent) !important;
+    opacity: 1 !important;
+    /* Firefox */
+}
+
+:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: var(--accent) !important;
+}
+
+::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: var(--accent) !important;
+}
+
+.input-group.optin label {
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+
+.input-group.optin input[type="checkbox"] {
+    display: none;
+}
+
+.input-group.optin input[type="checkbox"]+label:before {
+    font-family: FontAwesome;
+    display: inline-block;
+    content: "\f0c8";
+    letter-spacing: 10px;
+    cursor: pointer;
+}
+
+.input-group.optin input[type="checkbox"]:checked+label:before {
+    content: "\f14a";
+}
+
+button[type="submit"] {
+    width: calc(50% - 1.25rem);
+    padding: 0.5rem;
+    color: var(--prim);
+    background-color: var(--accent);
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+@media screen and (max-width: 768px) {
+    .input-group.half {
+        width: 100%;
+    }
+    button[type="submit"] {
+        width: 100%;
+    }
+}

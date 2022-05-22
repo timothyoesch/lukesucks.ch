@@ -1,0 +1,19 @@
+{
+    "name": "timothyoesch/lukesucks.ch",
+    "description": "Petition against Luke Mockridge's show in Zurich on the 29th of May because multiple women have accused him of sexual asault. No shows for predators! lukesucks.ch",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "timothyoesch",
+            "email": "54284649+timothyoesch@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.4",
+        "pecee/simple-router": "4.3.7.2",
+        "mailchimp/marketing": "^3.0",
+        "matomo/matomo-php-tracker": "^3.0",
+        "foroco/php-browser-detection": "^2.3"
+    }
+}
