@@ -27,8 +27,8 @@ $publicSigns = $publicSigns->fetch_all(MYSQLI_ASSOC);
 <div id="open-letter" class="pb-20">
     <div class="sm-cont">
         <div id="heroine-mob-content" class="mt-14">
-            <h1 class="bg-header text-8xl mb-4">Keine Show</h1>
-            <h1 class="bg-header text-8xl">für Täter!</h1>
+            <h1 class="bg-header text-7xl mb-4">Keine Show</h1>
+            <h1 class="bg-header text-7xl">für Täter!</h1>
         </div>
         <div id="letter-text" class="text-2xl mt-14">
             <p><strong>Luke Mockridge wird am 29. Mai im Hallenstadion Zürich auftreten, hilf mit, das zu verhindern!</strong></p>
@@ -60,6 +60,11 @@ $publicSigns = $publicSigns->fetch_all(MYSQLI_ASSOC);
             ?>
         </div>
         <h2 class="text-center bg-header text-8xl mt-16 mb-10">Hilf mit!</h2>
+        <div id="message-container" class="my-6 p-3 leading-none">
+            <span id="response-message">
+                This is where the response message will stand.
+            </span>
+        </div>
         <form action="#" id="sign-form">
             <input type="hidden" name="uuid" value="<?= uniqid("sign_") ?>">
             <input type="hidden" name="userdata" value='<?= $userdata ?>'>
@@ -97,6 +102,17 @@ $publicSigns = $publicSigns->fetch_all(MYSQLI_ASSOC);
             </div>
             <button type="submit">Unterschreiben</button>
         </form>
+        <div id="luke-mobi-container" hidden>
+            <p class="font-2xl mb-5">Teile diesen Brief mit deinen Freund*innen, <b>damit wir möglichst lautstark zeigen können, dass Tätern keine Bühne gegeben werden darf!</b></p>
+            <div id="luke-mobi-buttons" class="flex flex-wrap gap-2 mt-3">
+                <button id="luke-mobi-whatsApp" data-type="whatsapp" class="luke-button">Auf WhatsApp teilen</button>
+                <button id="luke-mobi-telegram" data-type="telegram" class="luke-button">Auf Telegram teilen</button>
+                <button id="luke-mobi-facebook" data-type="facebook" class="luke-button">Auf Facebook teilen</button>
+                <button id="luke-mobi-twitter" data-type="twitter" class="luke-button">Auf Twitter teilen</button>
+                <button id="luke-mobi-copy" data-type="copy" class="luke-button">Nachricht kopieren</button>
+                <button id="luke-mobi-email" data-type="email" class="luke-button luke-button-sec">Per Email teilen</button>
+            </div>
+        </div>
     </div>
 </div>
 

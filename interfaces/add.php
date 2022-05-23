@@ -129,7 +129,7 @@ try {
 $return = [
     "status" => "success",
     "code" => "s.1:87",
-    "message" => "Danke für deine Unterschrift! Zusammen können wir zeigen, dass Tätern keine Bühne geboten werden soll!",
+    "message" => "Danke für deine Unterschrift!",
 ];
 echo(json_encode($return));
 exit;

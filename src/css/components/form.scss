@@ -91,3 +91,23 @@ button[type="submit"] {
         width: 100%;
     }
 }
+
+#message-container {
+    display: none;
+    color: var(--msgColor);
+    background-color: var(--msgBG);
+    border: 2px solid var(--msgColor);
+    border-radius: 4px;
+}
+
+#message-container.error {
+    display: block;
+    --msgColor: rgb(85, 3, 3);
+    --msgBG: rgb(221, 36, 36);
+}
+
+#message-container.success {
+    display: block;
+    --msgColor: rgb(3, 85, 37);
+    --msgBG: rgb(36, 221, 76);
+}

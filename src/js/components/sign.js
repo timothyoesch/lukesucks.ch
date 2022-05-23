@@ -26,6 +26,18 @@ if (signupForm) {
       });
       const content = await rawResponse.json();
       console.log(content);
+      document.querySelector("span#response-message").innerText =
+        content.message;
+      document
+        .querySelector("#message-container")
+        .classList.add(content.status);
+      document
+        .querySelector("#message-container")
+        .scrollIntoView({ behavior: "smooth" });
+      if (content.status === "success") {
+        signupForm.remove();
+        document.getElementById("luke-mobi-container").style.display = "block";
+      }
     })();
   });
 }

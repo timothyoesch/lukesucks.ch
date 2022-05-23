@@ -1,7 +1,7 @@
 <?php
-require '../vendor/autoload.php';
+require __DIR__ . '/../../vendor/autoload.php';
 
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . "/../");
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . "/../../");
 $dotenv->safeLoad();
 
 use Pecee\SimpleRouter\SimpleRouter as Router;
@@ -32,22 +32,6 @@ try {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
 
-$Browser = new foroco\BrowserDetection();
-$useragent = $_SERVER['HTTP_USER_AGENT'];
-$result = $Browser->getAll($useragent);
-$userdata = json_encode($result);
-global $userdata;
-
-$mcapi = $_ENV["MCAPI"];
-$mclistid = $_ENV["MCLISTID"];
-$mcserver = $_ENV["MCSERVER"];
-$mcclient = new \MailchimpMarketing\ApiClient();
-$mcclient->setConfig([
-    'apiKey' => $mcapi,
-    'server' => $mcserver
-]);
-global $mcclient;
-
 $conn = new mysqli($_ENV['DBHOST'], $_ENV['DBUSER'], $_ENV['DBPW'], $_ENV['DBNAME']);
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
@@ -56,23 +40,14 @@ if (!$conn) {
 }
 global $conn;
 
+$stmt = $conn->prepare("SELECT * FROM `signs` WHERE `sign_status` = '1';");
+$stmt->execute();
+$result = $stmt->get_result();
+$signs = $result->fetch_all(MYSQLI_ASSOC);
+$numsigns = count($signs);
 
-Router::get('/', function() {
-    $page = [
-        "title" => "Keine Show für Täter - Luke Mockridge sucks",
-        "desc" => "Luke Mockridge wird am 29. Mai im Hallenstadion Zürich auftreten, hilf mit, das zu verhindern!",
-    ];
-    include __DIR__ . "/../templates/home.php";
-});
+$stmt = $conn->prepare("INSERT INTO `growth` (`measurement_number`) VALUES (?)");
+$stmt->bind_param("i", $numsigns);
+$stmt->execute();
 
-Router::post('/add', function() {
-    include __DIR__ . "/../interfaces/add.php";
-});
-
-Router::get('/freischalten/{uuid}', function($uuid) {
-    include __DIR__ . "/../interfaces/freischalten.php";
-});
-
-Router::get('/fetchall', function() {
-    include __DIR__ . "/../interfaces/fetchall.php";
-});
+file_put_contents(__DIR__ . "/growth-script.log", date("Y-m-d H:i:s") . ": " . $numsigns . " signs\n", FILE_APPEND);

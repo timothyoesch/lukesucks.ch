@@ -1,0 +1,76 @@
+.luke-button {
+    display: inline-block;
+    padding: 0.5em 1em;
+    background-color: var(--buttonBg);
+    color: var(--buttonColor);
+
+    --buttonBg: var(--accent);
+    --buttonColor: var(--prim);
+
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+}
+
+#luke-mobi-buttons .luke-button {
+    width: calc(50% - 0.25rem);
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+    #luke-mobi-buttons .luke-button {
+        width: 100%;
+    }
+}
+
+#luke-mobi-buttons .luke-button::before {
+    font-family: "FontAwesome";
+    margin-right: 0.5rem;
+    transform-origin: center right;
+    display: inline-block;
+    font-weight: 400;
+}
+
+#luke-mobi-buttons .luke-button#luke-mobi-copy::before {
+    content: "\f0c5";
+}
+
+#luke-mobi-buttons .luke-button#luke-mobi-whatsApp {
+    --buttonBg: #25D366;
+    --buttonColor: white;
+}
+
+#luke-mobi-buttons .luke-button#luke-mobi-whatsApp::before {
+    content: "\f232";
+}
+
+#luke-mobi-buttons .luke-button#luke-mobi-telegram {
+    --buttonBg: #0088cc;
+    --buttonColor: white;
+}
+
+#luke-mobi-buttons .luke-button#luke-mobi-telegram::before {
+    content: "\f2c6";
+}
+
+#luke-mobi-buttons .luke-button#luke-mobi-facebook {
+    --buttonBg: #3B5998;
+    --buttonColor: white;
+}
+
+#luke-mobi-buttons .luke-button#luke-mobi-facebook::before {
+    content: "\f09a";
+}
+
+#luke-mobi-buttons .luke-button#luke-mobi-twitter {
+    --buttonBg: #1DA1F2;
+    --buttonColor: white;
+}
+
+#luke-mobi-buttons .luke-button#luke-mobi-twitter::before {
+    content: "\f099";
+}
+
+#luke-mobi-buttons .luke-button#luke-mobi-email::before {
+    content: "\f0e0";
+}
