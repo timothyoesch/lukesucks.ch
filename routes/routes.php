@@ -76,3 +76,8 @@ Router::get('/freischalten/{uuid}', function($uuid) {
 Router::get('/fetchall', function() {
     include __DIR__ . "/../interfaces/fetchall.php";
 });
+
+
+Router::get('/analytics', function() {
+    include __DIR__ . "/../templates/analytics.php";
+});

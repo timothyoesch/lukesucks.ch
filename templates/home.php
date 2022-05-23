@@ -53,7 +53,7 @@ $publicSigns = $publicSigns->fetch_all(MYSQLI_ASSOC);
             <?php
             if(count($publicSigns) == 25): ?>
                 <div id="signatures-blind">
-                    <a id="show-more"><?= count($publicSigns) - 25 ?> weitere Unterschriften anzeigen</a>
+                    <a id="show-more"><?= $numSigns - 25 ?> weitere Unterschriften anzeigen</a>
                 </div>
             <?php
             endif;
