@@ -1,5 +1,18 @@
 <?php
 include(__DIR__ . "/partials/header.php");
+global $userdata;
+
+global $conn;
+$stmt = $conn->prepare("SELECT * FROM `signs` WHERE `sign_status` = '1'");
+$stmt->execute();
+$signs = $stmt->get_result();
+$numSigns = $signs->num_rows;
+
+$stmt = $conn->prepare("SELECT * FROM `signs` WHERE `sign_status` = '1' AND `sign_public` = '1' LIMIT 25");
+$stmt->execute();
+$publicSigns = $stmt->get_result();
+$publicSigns = $publicSigns->fetch_all(MYSQLI_ASSOC);
+
 ?>
 
 <div id="heroine-container">
@@ -19,48 +32,68 @@ include(__DIR__ . "/partials/header.php");
         </div>
         <div id="letter-text" class="text-2xl mt-14">
             <p><strong>Luke Mockridge wird am 29. Mai im Hallenstadion Zürich auftreten, hilf mit, das zu verhindern!</strong></p>
-            <p>Nach dem Vorwurf der versuchten Vergewaltigung an seiner Ex-Freundin äusserten sich in einer Recherche des Spiegel 10 Frauen unabhängig voneinander, Mockridge sei ihnen gegenüber sexuell übergriffig gewesen. <strong>Er akzeptiere kein »Nein«, in ihren Schilderungen fallen immer wieder die Worte »aggressiv« und »rücksichtslos«.</strong> Anstatt seine Energie in die Aufarbeitung seines übergriffigen Verhaltens zu investieren, <strong>bemüht sich Mockridge darum, die Betroffenen und Journalist*innen mundtot zu machen und geht gerichtlich gegen sie vor.</strong> Ebenfalls ist bewiesen, dass er die berufliche Karriere seiner Ex-Freundin nach den geäusserten Vorwürfen weisgebend sabotiert hat.</p>
+            <p>Nach dem Vorwurf der versuchten Vergewaltigung an seiner Ex-Freundin äusserten sich in einer Recherche des Spiegel 10 Frauen unabhängig voneinander, Mockridge sei ihnen gegenüber sexuell übergriffig gewesen. <strong>Er akzeptiere kein »Nein«, in ihren Schilderungen fallen immer wieder die Worte »aggressiv« und »rücksichtslos«.</strong> Anstatt seine Energie in die Aufarbeitung seines übergriffigen Verhaltens zu investieren, <strong>bemüht sich Mockridge darum, die Betroffenen und Journalist*innen mundtot zu machen und geht gerichtlich gegen sie vor.</strong> Ebenfalls ist bewiesen, dass er die berufliche Karriere seiner Ex-Freundin nach den geäusserten Vorwürfen massgeblich sabotiert hat.</p>
             <p>Jetzt witzelt er über das Thema in seiner neuen Show, mit der er gerade auf Tour ist. Wenn es nach den Veranstaltern geht am 29. Mai im Hallenstadion Zürich.</p>
             <p><strong>Es ist wegen Geschichten wie diesen, dass Vorfälle sexualisierter Gewalt nur in den seltensten Fällen angezeigt werden.</strong> Überlebenden wird nicht geglaubt, sie werden nicht ernst genommen und die Täter kommen grösstenteils unbeschadet davon.</p>
             <p>In einer patriarchalen Gesellschaft hat diese strukturelle vielschichtige Gewalt gegen Flinta* System. <strong>Ni una Menos, wir sind viele!</strong></p>
             <p><strong>Veranstaltungsorte wie das Hallenstadion Zürich und Veranstalter*innen wie die Act Entertainment AG sind dafür verantwortlich, wem sie eine Bühne geben. Sie müssen Luke Mockridges Auftritt absagen. Ausserdem fordern wir, dass sie zu ihrer Entscheidung, einem Täter weiterhin eine Plattform geben zu wollen, Stellung beziehen. Keine Show für Täter, Konsequenzen für Luke!</strong></p>
         </div>
-        <p class="text-2xl mt-14">Bisher haben <b>298 Personen</b> unterschrieben!</p>
+        <p class="text-2xl mt-14">Bisher haben <b><?= $numSigns ?> Personen</b> unterschrieben!</p>
         <div id="signatures" class="text-sm mt-6">
-            <p><strong>Alessandra Widmer,</strong> Co-Geschäftsleiterin LOS, 4058 Basel; <strong>Salome Trafelet,</strong> Lesbenorganisation Schweiz, 2502 Biel; <strong>Elodie Oustin,</strong> LOS, 1400 Yverdon-les-bains; <strong>Nic Senften,</strong> Khur Pride, 7208 Malans; <strong>Hanna Janssen,</strong> Milchjugend, 8004 Zürich; <strong>Joh von Felten,</strong> Milchjugend, 8005 Zürich; <strong>muriel waeger,</strong> Co-direcrtice, Organisation des lesbiennes suisses, 1400 yverdon; <strong>Gonzague Bochud ,</strong> Sarigai / Bulle Pride, 1700 Fribourg ; <strong>Sandra Schäfer,</strong> Programmleiterin du-bist-du, 8953 Dietikon; <strong>Svenja Senften,</strong> Khur Pride, 8606 Nänikon; <strong>May Freigang,</strong> TGNS, 8037 Zürich; <strong>Ray Müller,</strong> Ehe für Alle, 4055 Basel; <strong>James Ackermann,</strong> 5400 Baden; <strong>Romain Pilloud,</strong> 1815 Clarens; <strong>Aymeric Dallinge,</strong> Pôle Agression et Violence , 1000 Lausanne; <strong>Debora Grasso,</strong> 2560 Nidau; <strong>Henrik von Dewitz,</strong> TGNS, 6003 Luzern; <strong>Tabea Rai,</strong> 3014 Bern; <strong>Tabea Rai,</strong> Bern Pride, 3013 Bern; <strong>Lois Stettler,</strong> TINte Bühnenliteratur; <strong>Alessandra Widmer,</strong> Co-Geschäftsleiterin LOS, 4058 Basel; <strong>Salome Trafelet,</strong> Lesbenorganisation Schweiz, 2502 Biel; <strong>Elodie Oustin,</strong> LOS, 1400 Yverdon-les-bains; <strong>Nic Senften,</strong> Khur Pride, 7208 Malans; <strong>Hanna Janssen,</strong> Milchjugend, 8004 Zürich; <strong>Joh von Felten,</strong> Milchjugend, 8005 Zürich; <strong>muriel waeger,</strong> Co-direcrtice, Organisation des lesbiennes suisses, 1400 yverdon; <strong>Gonzague Bochud ,</strong> Sarigai / Bulle Pride, 1700 Fribourg ; <strong>Sandra Schäfer,</strong> Programmleiterin du-bist-du, 8953 Dietikon; <strong>Svenja Senften,</strong> Khur Pride, 8606 Nänikon; <strong>May Freigang,</strong> TGNS, 8037 Zürich; <strong>Ray Müller,</strong> Ehe für Alle, 4055 Basel; <strong>James Ackermann,</strong> 5400 Baden; <strong>Romain Pilloud,</strong> 1815 Clarens; <strong>Aymeric Dallinge,</strong> Pôle Agression et Violence , 1000 Lausanne; <strong>Debora Grasso,</strong> 2560 Nidau; <strong>Henrik von Dewitz,</strong> TGNS, 6003 Luzern; <strong>Tabea Rai,</strong> 3014 Bern; <strong>Tabea Rai,</strong> Bern Pride, 3013 Bern; <strong>Lois Stettler,</strong> TINte Bühnenliteratur</p>
-            <div id="signatures-blind">
-                <a id="show-more">242 weitere Unterschriften anzeigen</a>
-            </div>
+            <p>
+                <?php
+                $i = 0;
+                foreach($publicSigns as $sign) : ?>
+                    <strong><?= $sign["sign_fname"] ?> <?= $sign["sign_lname"] ?>,</strong><?php if ($sign["sign_orga"] != "") : ?> <?= $sign["sign_orga"] ?>,<?php endif; ?> <?= $sign["sign_plz"] ?> <?= $sign["sign_ort"] ?><?php if ($i < count($publicSigns) - 1) : ?>;<?php endif; ?>
+                <?php
+                $i++;
+                endforeach;
+                ?>
+            </p>
+            <?php
+            if(count($publicSigns) == 25): ?>
+                <div id="signatures-blind">
+                    <a id="show-more"><?= count($publicSigns) - 25 ?> weitere Unterschriften anzeigen</a>
+                </div>
+            <?php
+            endif;
+            ?>
         </div>
         <h2 class="text-center bg-header text-8xl mt-16 mb-10">Hilf mit!</h2>
         <form action="#" id="sign-form">
+            <input type="hidden" name="uuid" value="<?= uniqid("sign_") ?>">
+            <input type="hidden" name="userdata" value='<?= $userdata ?>'>
             <div class="input-group">
                 <label for="fname">Vorname</label>
-                <input type="text" id="fname" name="fname">
+                <input type="text" id="fname" name="fname" required>
             </div>
             <div class="input-group">
                 <label for="lname">Nachname</label>
-                <input type="text" id="lname" name="lname">
+                <input type="text" id="lname" name="lname" required>
             </div>
             <div class="input-group">
                 <label for="email">E-Mail</label>
-                <input type="email" id="email" name="email">
+                <input type="email" id="email" name="email" required>
             </div>
             <div class="input-group half">
                 <label for="plz">PLZ</label>
-                <input type="text" id="plz" name="plz">
+                <input type="text" id="plz" name="plz" required>
             </div>
             <div class="input-group half">
                 <label for="city">Ort</label>
-                <input type="text" id="city" name="city">
+                <input type="text" id="city" name="city" required>
             </div>
             <div class="input-group">
                 <label for="orga">Organisation</label>
                 <input type="text" id="orga" name="orga" placeholder="optional">
             </div>
             <div class="input-group optin">
+                <input type="checkbox" id="public" name="public" checked>
+                <label for="public">Ich möchte, dass mein Name öffentlich angezeigt wird.</label>
+            </div>
+            <div class="input-group optin">
                 <input type="checkbox" id="optin" name="optin" checked>
-                <label for="optin">Die JUSO darf mich auf dem Laufenden halten</label>
+                <label for="optin">Die JUSO darf mich über diesen Brief auf dem Laufenden halten.</label>
             </div>
             <button type="submit">Unterschreiben</button>
         </form>

@@ -66,6 +66,12 @@ img#heroine-bg-img {
 
     #heroine-mob-content {
         display: block;
+        margin-top: -15rem;
+    }
+
+    #heroine-mob-content h1.bg-header {
+        color: var(--accent);
+        background-color: var(--prim);
     }
 
     img#heroine-bg-img {
